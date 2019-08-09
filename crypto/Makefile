@@ -81,8 +81,7 @@ SRC:=\
 	pubkey/rsa_parse_mem.c \
 	pubkey/rsa_parse_file.c \
 	pubkey/rsa_write_mem.c \
-	pubkey/rsa_write_file.c \
-
+	pubkey/rsa_write_file.c
 
 SRC_CHACHA20POLY = \
         aead/chacha20poly1305ietf/sse2/poly1305_sse2.c \
