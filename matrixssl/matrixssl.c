@@ -2571,7 +2571,7 @@ int32 matrixValidateCertsExt(psPool_t *pool, psX509Cert_t *subjectCerts,
                     if (opts->nameType == NAME_TYPE_ANY ||
                         opts->nameType == NAME_TYPE_SAN_IP_ADDRESS)
                     {
-                        Snprintf(ip, 15, "%u.%u.%u.%u",
+                        Snprintf(ip, sizeof(ip), "%u.%u.%u.%u",
                             (unsigned char) (n->data[0]),
                             (unsigned char ) (n->data[1]),
                             (unsigned char ) (n->data[2]),
