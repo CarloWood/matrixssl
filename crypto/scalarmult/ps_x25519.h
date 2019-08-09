@@ -39,7 +39,7 @@
 # ifdef MATRIX_CONFIGURATION_INCDIR_FIRST
 #  include <cryptoConfig.h>   /* Must be included second */
 # else
-#  include "../cryptoConfig.h"   /* Must be included second */
+#  include "cryptoConfig.h"   /* Must be included second */
 # endif
 # include "osdep-types.h"
 
