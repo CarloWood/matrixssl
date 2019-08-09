@@ -232,8 +232,8 @@ void *psDynBufSubFinish(psDynBuf_t *sub);
 /* Note: This variable argument function is currently implemented as a macro. */
 # define psDynBufAppendStrf(ps_dyn_buf_p, ...)               \
     do {                                \
-        char tmp;                       \
-        size_t len = 1 + Snprintf(&tmp, 1, __VA_ARGS__);    \
+        char tmp[64];                       \
+        size_t len = 1 + Snprintf(tmp, sizeof(tmp), __VA_ARGS__);    \
         char *target = psDynBufAppendSize((ps_dyn_buf_p), len); \
         if (target) {                       \
             Snprintf(target, len, __VA_ARGS__);     \
