@@ -33,6 +33,7 @@
 #include "osdep_string.h"
 #include "osdep_unistd.h"
 #include "core/coreApi.h"
+#include "psnet.h"
 #include "matrixssl/matrixsslApi.h"
 #include "matrixssl/matrixsslNet.h"
 #include "matrixssl/matrixsslSocket.h"
