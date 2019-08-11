@@ -1,18 +1,24 @@
-DEFAULT_INCLUDES =
+DEFS = -DMATRIX_CONFIGURATION_INCDIR_FIRST
+DEFAULT_INCLUDES = -I @top_builddir@/evio/matrixssl
+
 noinst_PROGRAMS = server client simpleServer simpleClient
 
 server_SOURCES = server.c http.c
-server_CFLAGS = $(CW_MATRIXSSL_CFLAGS) -I @top_builddir@/evio/matrixssl -pthread
+server_CFLAGS = $(CW_MATRIXSSL_CFLAGS) -pthread
 server_LDADD = @top_builddir@/evio/matrixssl/matrixssl/libssl_s.la @top_builddir@/evio/matrixssl/crypto/libcrypt_s.la @top_builddir@/evio/matrixssl/core/libcore_s.la
 
 client_SOURCES = client.c http.c
-client_CFLAGS = $(CW_MATRIXSSL_CFLAGS) -I @top_builddir@/evio/matrixssl -pthread
+client_CFLAGS = $(CW_MATRIXSSL_CFLAGS) -pthread
 client_LDADD = ../common/libclient_common_s.la @top_builddir@/evio/matrixssl/matrixssl/libssl_s.la @top_builddir@/evio/matrixssl/crypto/libcrypt_s.la @top_builddir@/evio/matrixssl/core/libcore_s.la
 
 simpleServer_SOURCES = simpleServer.c
-simpleServer_CFLAGS = $(CW_MATRIXSSL_CFLAGS) -I @top_builddir@/evio/matrixssl -I@top_srcdir@/evio/matrixssl -pthread
+simpleServer_CFLAGS = $(CW_MATRIXSSL_CFLAGS) -I@top_srcdir@/evio/matrixssl -pthread
 simpleServer_LDADD = @top_builddir@/evio/matrixssl/matrixssl/libssl_s.la @top_builddir@/evio/matrixssl/crypto/libcrypt_s.la @top_builddir@/evio/matrixssl/core/libcore_s.la
 
 simpleClient_SOURCES = simpleClient.c
-simpleClient_CFLAGS = $(CW_MATRIXSSL_CFLAGS) -I @top_builddir@/evio/matrixssl -pthread
+simpleClient_CFLAGS = $(CW_MATRIXSSL_CFLAGS) -pthread
 simpleClient_LDADD = @top_builddir@/evio/matrixssl/matrixssl/libssl_s.la @top_builddir@/evio/matrixssl/crypto/libcrypt_s.la @top_builddir@/evio/matrixssl/core/libcore_s.la
+
+# --------------- Maintainer's Section
+
+MAINTAINERCLEANFILES = $(srcdir)/makefile.in

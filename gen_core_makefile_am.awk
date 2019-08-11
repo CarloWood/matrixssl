@@ -4,9 +4,9 @@ BEGIN {
   constructing_sources=0
 
   # Write a header.
-  # Do not use the default includes.
   printf "AM_CPPFLAGS =\n"
-  printf "DEFAULT_INCLUDES =\n"
+  printf "DEFS = -DMATRIX_CONFIGURATION_INCDIR_FIRST\n"
+  printf "DEFAULT_INCLUDES = -I @top_builddir@/evio/matrixssl\n"
 }
 
 # Stop processing after this line.
@@ -131,7 +131,9 @@ END {
   printf "\nprint:\n\t@$(foreach V,$(sort $(.VARIABLES)), $(if $(filter-out environment%% default automatic, $(origin $V)),$(warning $V=$($V) ($(value $V)))))\n\n"
 
   # Automatically generate makefile.am when gen_core_makefile_am.awk or generate_makefile_am.sh have been changed.
-  printf "# --------------- Maintainer's Section\n\nif MAINTAINER_MODE\n"
+  printf "# --------------- Maintainer's Section\n"
+  printf "\nMAINTAINERCLEANFILES = $(srcdir)/makefile.in $(srcdir)/makefile.am\n"
+  printf "\nif MAINTAINER_MODE\n"
   printf "$(srcdir)/makefile.am: $(srcdir)/../gen_core_makefile_am.awk $(srcdir)/../generate_makefile_am.sh\n\t(cd $(srcdir)/.. && ./generate_makefile_am.sh)\n"
   printf "endif\n"
 }

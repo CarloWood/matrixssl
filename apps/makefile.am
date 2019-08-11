@@ -1,3 +1,7 @@
 AM_MAKEFLAGS = MATRIXSSL_ROOT=@srcdir@/.. OBJS= STATIC= SERVER_EXE= CLIENT_EXE= EXE= SIMPLE_CLIENT_EXE= SIMPLE_SERVER_EXE= SIMPLE_SERVER_SRC= SIMPLE_CLIENT_SRC=
 
 SUBDIRS = common dtls ssl
+
+# --------------- Maintainer's Section
+
+MAINTAINERCLEANFILES = $(srcdir)/makefile.in

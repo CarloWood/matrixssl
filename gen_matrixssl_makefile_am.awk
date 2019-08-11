@@ -4,21 +4,27 @@ BEGIN {
   inside_addprefix=0
 
   # Write a header.
-  # Do not use the default includes.
   printf "AM_CPPFLAGS =\n"
-  printf "DEFAULT_INCLUDES =\n"
+  printf "DEFS = -DMATRIX_CONFIGURATION_INCDIR_FIRST\n"
+  printf "DEFAULT_INCLUDES = -I @top_builddir@/evio/matrixssl\n"
+
+  printf "\nnoinst_LTLIBRARIES = libssl_s.la\n"
 }
 
 # Start processing the input file from this line (everything before this line is ignored).
 /^MATRIXSSL_ROOT/ {
   before_common_include=0
-  # This is needed to include matrixsslConfig.h
-  $0 = "MATRIXSSL_ROOT:=$(abs_top_builddir)/evio/matrixssl"
+  # We don't really use this, but well.
+  $0 = "MATRIXSSL_ROOT := @top_srcdir@/evio/matrixssl"
 }
 
-# We're including this from GNUmakefile.am.
+# We're including this from GNUmakefile.in.
 /^include.*common\.mk/ {
   next
+}
+
+/^SRC/ {
+  sub(/^SRC *:= */, "libssl_s_la_SOURCES = ")
 }
 
 # Do not copy anything anymore once this line has been reached.
@@ -34,12 +40,12 @@ BEGIN {
 
 END {
   # Write a trailer.
-  printf "noinst_LTLIBRARIES = libssl_s.la\n"
-  printf "libssl_s_la_SOURCES = $(SRC)\n"
-  printf "libssl_s_la_CFLAGS = $(MATRIXSSL_CFLAGS) $(CFLAGS_POSITION_INDEPENDENT) $(CFLAGS_GARBAGE_COLLECTION)\n"
+  printf "libssl_s_la_CFLAGS = $(CW_MATRIXSSL_CFLAGS)\n"
 
   # Automatically generate makefile.am when gen_matrixssl_makefile_am.awk or generate_makefile_am.sh have been changed.
-  printf "# --------------- Maintainer's Section\n\nif MAINTAINER_MODE\n"
+  printf "\n# --------------- Maintainer's Section\n"
+  printf "\nMAINTAINERCLEANFILES = $(srcdir)/makefile.in $(srcdir)/makefile.am\n"
+  printf "\nif MAINTAINER_MODE\n"
   printf "$(srcdir)/makefile.am: $(srcdir)/../gen_matrixssl_makefile_am.awk $(srcdir)/../generate_makefile_am.sh\n\t(cd $(srcdir)/.. && ./generate_makefile_am.sh)\n"
   printf "endif\n"
 }

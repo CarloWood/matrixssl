@@ -1,5 +1,11 @@
-DEFAULT_INCLUDES =
+DEFS = -DMATRIX_CONFIGURATION_INCDIR_FIRST
+DEFAULT_INCLUDES = -I @top_builddir@/evio/matrixssl
+
 noinst_LTLIBRARIES = libclient_common_s.la
 
 libclient_common_s_la_SOURCES = client_common.c client_common.h clientconfig.c load_keys.c
-libclient_common_s_la_CFLAGS = $(CW_MATRIXSSL_CFLAGS) -I @top_builddir@/evio/matrixssl
+libclient_common_s_la_CFLAGS = $(CW_MATRIXSSL_CFLAGS)
+
+# --------------- Maintainer's Section
+
+MAINTAINERCLEANFILES = $(srcdir)/makefile.in
