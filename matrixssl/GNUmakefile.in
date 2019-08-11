@@ -1,0 +1,11 @@
+include @srcdir@/Makefile
+include makefile
+
+all:
+compile:
+Makefile: makefile
+
+.PHONY: Makefile
+
+print:
+	@$(foreach V,$(sort $(.VARIABLES)), $(if $(filter-out environment% default automatic, $(origin $V)),$(warning $V=$($V) ($(value $V)))))

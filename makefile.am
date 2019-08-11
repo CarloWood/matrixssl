@@ -1,4 +1,4 @@
-AM_MAKEFLAGS = -I "$(srcdir)/core" -I "$(srcdir)/crypto"
+AM_MAKEFLAGS = -I "$(srcdir)/core" -I "$(srcdir)/crypto" OBJS= STATIC=
 
 BUILT_SOURCES = cryptoConfig.h matrixsslConfig.h
 

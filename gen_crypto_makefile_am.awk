@@ -60,9 +60,6 @@ END {
 
   printf "include makefile_ltlibs.inc\n\n"
 
-  # Print all makefile variables.
-  printf "print:\n\t@$(foreach V,$(sort $(.VARIABLES)), $(if $(filter-out environment%% default automatic, $(origin $V)),$(warning $V=$($V) ($(value $V)))))\n\n"
-
   # Automatically generate makefile.am when gen_crypto_makefile_am.awk or generate_makefile_am.sh have been changed.
   printf "# --------------- Maintainer's Section\n\nif MAINTAINER_MODE\n"
   printf "$(srcdir)/makefile.am: $(srcdir)/../gen_crypto_makefile_am.awk $(srcdir)/../generate_makefile_am.sh\n\t(cd $(srcdir)/.. && ./generate_makefile_am.sh)\n"

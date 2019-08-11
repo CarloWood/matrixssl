@@ -1,3 +1,0 @@
-@matrixssl_include@ @srcdir@/../common.mk
-@matrixssl_include@ @srcdir@/makefile.inc
-@matrixssl_include@ makefile
