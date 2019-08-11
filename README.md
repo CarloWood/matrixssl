@@ -1,5 +1,5 @@
 
-![MatrixSSL Banner](http://www.matrixssl.org/assets/img/matrixssl_logo_transparent_md.png)
+![MatrixSSL Banner](img/matrixssl_logo_transparent_md.png)
 
 Lightweight Embedded SSL/TLS Implementation
 *Official source repository of matrixssl.org*
