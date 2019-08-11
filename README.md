@@ -1,14 +1,14 @@
 ## Overview
 
-This fork adds support for GNU autotools, for building `matrixssl` as a libtool library,
-and so it can be build in a build-directory rather than the source directory.
+This fork adds support for GNU autotools; for building `matrixssl` as a libtool library
+and/or to built in a build-directory, rather than the source directory.
 
 The advantage of having the library as `libmatrix.la` is that it can then be linked
-into a shared library-- for example-- or used within another autotool-based project,
+into a shared library &mdash; for example &mdash; or used within another autotool-based project,
 as git submodule.
 
-Currently the (only) project that is doing this is [evio](https://github.com/CarloWood/evio)
-which is git submodule itself (and under development) relying on [cwm4](https://github.com/CarloWood/cwm4)
+Currently the (only) project that is doing this is [evio](https://github.com/CarloWood/evio),
+which is git submodule itself (still under development) relying on [cwm4](https://github.com/CarloWood/cwm4)
 for its inclusion into the application project. Adding direct support for `cwm4` to this
 `matrixssl` submodule is on the `TODO` list.
 
