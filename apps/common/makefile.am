@@ -1,0 +1,5 @@
+DEFAULT_INCLUDES =
+noinst_LTLIBRARIES = libclient_common_s.la
+
+libclient_common_s_la_SOURCES = client_common.c client_common.h clientconfig.c load_keys.c
+libclient_common_s_la_CFLAGS = $(CW_MATRIXSSL_CFLAGS) -I @top_builddir@/evio/matrixssl

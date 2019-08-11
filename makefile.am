@@ -1,0 +1,11 @@
+AM_MAKEFLAGS = -I "$(srcdir)/core" -I "$(srcdir)/crypto"
+
+BUILT_SOURCES = cryptoConfig.h matrixsslConfig.h
+
+SUBDIRS= core crypto matrixssl apps
+
+cryptoConfig.h:
+	ln -sf $(srcdir)/configs/default/cryptoConfig.h cryptoConfig.h
+
+matrixsslConfig.h:
+	ln -sf $(srcdir)/configs/default/matrixsslConfig.h matrixsslConfig.h

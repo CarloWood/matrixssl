@@ -1,0 +1,12 @@
+include @srcdir@/Makefile
+CW_MATRIXSSL_CFLAGS := ${CFLAGS}
+include makefile
+
+all:
+compile:
+Makefile: makefile
+
+.PHONY: Makefile
+
+print:
+	@$(foreach V,$(sort $(.VARIABLES)), $(if $(filter-out environment% default automatic, $(origin $V)),$(warning $V=$($V) ($(value $V)))))

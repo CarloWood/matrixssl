@@ -1,0 +1,9 @@
+include @srcdir@/Makefile
+CW_MATRIXSSL_CFLAGS := ${CFLAGS}
+include makefile
+
+print:
+	@$(foreach V,$(sort $(.VARIABLES)), $(if $(filter-out environment% default automatic, $(origin $V)),$(warning $V=$($V) ($(value $V)))))
+
+show:
+	@echo "CW_MATRIXSSL_CFLAGS = \"${CW_MATRIXSSL_CFLAGS}\""

@@ -1,0 +1,10 @@
+DEFAULT_INCLUDES =
+noinst_PROGRAMS = dtlsClient dtlsServer
+
+dtlsClient_SOURCES = dtlsClient.c dtlsCommon.c dtlsCommon.h
+dtlsClient_CFLAGS = $(CW_MATRIXSSL_CFLAGS) -I @top_builddir@/evio/matrixssl -pthread
+dtlsClient_LDADD = ../common/libclient_common_s.la @top_builddir@/evio/matrixssl/matrixssl/libssl_s.la @top_builddir@/evio/matrixssl/crypto/libcrypt_s.la @top_builddir@/evio/matrixssl/core/libcore_s.la
+
+dtlsServer_SOURCES = dtlsServer.c dtlsCommon.c dtlsCommon.h
+dtlsServer_CFLAGS = $(CW_MATRIXSSL_CFLAGS) -I @top_builddir@/evio/matrixssl -pthread
+dtlsServer_LDADD = @top_builddir@/evio/matrixssl/matrixssl/libssl_s.la @top_builddir@/evio/matrixssl/crypto/libcrypt_s.la @top_builddir@/evio/matrixssl/core/libcore_s.la
