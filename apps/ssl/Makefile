@@ -47,7 +47,7 @@ CFLAGS+=$(CFLAGS_INTERNAL)
 LDFLAGS+=$(LDFLAGS_INTERNAL)
 
 # Extra dependencies
-MATRIXSSL_CONFIG:=$(shell make parse-config --directory $(MATRIXSSL_ROOT)/matrixssl)
+#MATRIXSSL_CONFIG:=$(shell make parse-config --directory $(MATRIXSSL_ROOT)/matrixssl)
 
 include $(MATRIXSSL_ROOT)/common.mk
 
