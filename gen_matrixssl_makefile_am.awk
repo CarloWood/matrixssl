@@ -45,7 +45,7 @@ END {
 
   # Automatically generate makefile.am when gen_matrixssl_makefile_am.awk or generate_makefile_am.sh have been changed.
   printf "\n# --------------- Maintainer's Section\n"
-  printf "\nMAINTAINERCLEANFILES = $(srcdir)/makefile.in $(srcdir)/makefile.am\n"
+  printf "\nMAINTAINERCLEANFILES = $(srcdir)/makefile.in\n"
   printf "\nif MAINTAINER_MODE\n"
   printf "$(srcdir)/makefile.am: $(srcdir)/../gen_matrixssl_makefile_am.awk $(srcdir)/../generate_makefile_am.sh\n\t(cd $(srcdir)/.. && ./generate_makefile_am.sh)\n"
   printf "endif\n"

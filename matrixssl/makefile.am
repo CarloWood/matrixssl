@@ -52,7 +52,7 @@ libssl_s_la_CFLAGS = $(CW_MATRIXSSL_CFLAGS)
 
 # --------------- Maintainer's Section
 
-MAINTAINERCLEANFILES = $(srcdir)/makefile.in $(srcdir)/makefile.am
+MAINTAINERCLEANFILES = $(srcdir)/makefile.in
 
 if MAINTAINER_MODE
 $(srcdir)/makefile.am: $(srcdir)/../gen_matrixssl_makefile_am.awk $(srcdir)/../generate_makefile_am.sh

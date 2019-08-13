@@ -44,7 +44,7 @@ print:
 
 # --------------- Maintainer's Section
 
-MAINTAINERCLEANFILES = $(srcdir)/makefile.in $(srcdir)/makefile.am
+MAINTAINERCLEANFILES = $(srcdir)/makefile.in
 
 if MAINTAINER_MODE
 $(srcdir)/makefile.am: $(srcdir)/../gen_core_makefile_am.awk $(srcdir)/../generate_makefile_am.sh
