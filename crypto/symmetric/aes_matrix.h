@@ -71,6 +71,7 @@ typedef struct
 # endif
 
 # ifdef USE_MATRIX_AES_GCM
+#error Including UNALIGNED psAesGcm_t!
 typedef struct
 {
     psAesKey_t key;

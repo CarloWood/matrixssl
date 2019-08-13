@@ -59,7 +59,3 @@ xcuserdata/
 # GNU autotools and awk generated files
 makefile.in
 Makefile.in
-crypto/makefile.inc
-core/makefile.am
-crypto/makefile.am
-matrixssl/makefile.am
