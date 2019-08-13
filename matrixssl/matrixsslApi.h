@@ -142,7 +142,7 @@ PSPUBLIC int32_t matrixSslSessOptsSetKeyExGroups(
         psSize_t numClientHelloKeyShares);
 PSPUBLIC int32_t matrixSslSessOptsSetSigAlgs(
         sslSessOpts_t *options,
-        uint16_t *sigAlgs,
+        uint16_t const *sigAlgs,
         psSize_t sigAlgsLen);
 PSPUBLIC int32_t matrixSslSessOptsSetSigAlgsCert(
         sslSessOpts_t *options,

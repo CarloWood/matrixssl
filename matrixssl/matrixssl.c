@@ -350,7 +350,7 @@ int32_t matrixSslGetMaxEarlyData(ssl_t *ssl)
     In TLS1.3 this means just the CertificateVerify as the certificate
     signatures are handled using matrixSslSessOptsSetSigAlgsCert. */
 int32_t matrixSslSessOptsSetSigAlgs(sslSessOpts_t *options,
-        uint16_t *sigAlgs,
+        uint16_t const* sigAlgs,
         psSize_t sigAlgsLen)
 {
     psSize_t i;
