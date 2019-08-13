@@ -19,7 +19,7 @@ MATRIXSSL_CFLAGS='dnl
 MATRIXSSL_LIBS='dnl
         ${top_builddir}/evio/matrixssl/matrixssl/libssl_s.la dnl
         ${top_builddir}/evio/matrixssl/core/libcore_s.la dnl
-        ${top_builddir}/evio/matrixssl/crypto/crypt_s.la'
+        ${top_builddir}/evio/matrixssl/crypto/libcrypt_s.la'
 
 AC_SUBST([MATRIXSSL_CFLAGS])
 AC_SUBST([MATRIXSSL_LIBS])
