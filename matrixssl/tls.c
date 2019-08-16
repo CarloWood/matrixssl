@@ -985,6 +985,7 @@ int32 sslActivateWriteCipher(ssl_t *ssl)
  */
 int32 matrixSslNewHelloExtension(tlsExtension_t **extension, void *userPoolPtr)
 {
+    fprintf(stdout, "CALLING matrixSslNewHelloExtension()\n");
     psPool_t *pool = NULL;
     tlsExtension_t *ext;
 
@@ -1059,6 +1060,7 @@ void psAddUserExtToSession(ssl_t *ssl,
  */
 void matrixSslDeleteHelloExtension(tlsExtension_t *extension)
 {
+    fprintf(stdout, "CALLING matrixSslDeleteHelloExtension()\n");
     tlsExtension_t *next, *ext;
 
     if (extension == NULL)
@@ -1095,6 +1097,7 @@ void matrixSslDeleteHelloExtension(tlsExtension_t *extension)
 int32 matrixSslLoadHelloExtension(tlsExtension_t *ext,
     unsigned char *extension, uint32 length, uint32 extType)
 {
+    fprintf(stdout, "CALLING matrixSslLoadHelloExtension()\n");
     tlsExtension_t *current, *new;
 
     if (ext == NULL || (length > 0 && extension == NULL))

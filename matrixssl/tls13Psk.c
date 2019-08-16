@@ -148,6 +148,7 @@ int32_t matrixSslLoadTls13Psk(sslKeys_t *keys,
         psSize_t idLen,
         const psTls13SessionParams_t *params)
 {
+    fprintf(stdout, "CALLING matrixSslLoadTls13Psk()\n");
     psTls13Psk_t *psk;
 
     psk = tls13NewPsk(key, keyLen, id, idLen, PS_FALSE, params);

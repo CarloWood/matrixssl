@@ -80,6 +80,7 @@ int32_t matrixSslNewClientSession(ssl_t **ssl, const sslKeys_t *keys,
     sslExtCb_t extCb,
     sslSessOpts_t *options)
 {
+    fprintf(stdout, "CALLING matrixSslNewClientSession()\n");
     ssl_t *lssl;
     psBuf_t tmp;
     uint32 len;
@@ -321,6 +322,7 @@ void matrixSslRegisterClientIdentityCallback(ssl_t *ssl,
  */
 int32 matrixSslNewSessionId(sslSessionId_t **sess, void *poolUserPtr)
 {
+    fprintf(stdout, "CALLING matrixSslNewSessionId()\n");
     sslSessionId_t *ses;
     psPool_t *pool = NULL;
 
@@ -359,6 +361,7 @@ void matrixSslClearSessionId(sslSessionId_t *sess)
 
 void matrixSslDeleteSessionId(sslSessionId_t *sess)
 {
+    fprintf(stdout, "CALLING matrixSslDeleteSessionId()\n");
 
     if (sess == NULL)
     {
@@ -436,6 +439,7 @@ int32_t matrixSslGetEapFastSKS(const ssl_t *ssl,
 # ifdef USE_EXT_CLIENT_CERT_KEY_LOADING
 psBool_t matrixSslNeedClientCert(ssl_t *ssl)
 {
+    fprintf(stdout, "CALLING matrixSslNeedClientCert()\n");
     if (ssl->extClientCertKeyStateFlags ==
             EXT_CLIENT_CERT_KEY_STATE_WAIT_FOR_CERT_KEY_UPDATE)
     {
@@ -472,6 +476,7 @@ psBool_t matrixSslNeedClientPrivKey(ssl_t *ssl)
 
 psBool_t matrixSslClientCertUpdated(ssl_t *ssl)
 {
+    fprintf(stdout, "CALLING matrixSslClientCertUpdated()\n");
     if (ssl->extClientCertKeyStateFlags !=
             EXT_CLIENT_CERT_KEY_STATE_WAIT_FOR_CERT_KEY_UPDATE)
     {
@@ -819,6 +824,7 @@ void matrixSslRegisterALPNCallback(ssl_t *ssl,
  */
 int32 matrixSslGetReadbuf(ssl_t *ssl, unsigned char **buf)
 {
+    fprintf(stdout, "CALLING matrixSslGetReadbuf()\n");
     if (!ssl || !buf)
     {
         return PS_ARG_FAIL;
@@ -837,6 +843,7 @@ int32 matrixSslGetReadbuf(ssl_t *ssl, unsigned char **buf)
  */
 int32 matrixSslGetReadbufOfSize(ssl_t *ssl, int32 size, unsigned char **buf)
 {
+    fprintf(stdout, "CALLING matrixSslGetReadbufOfSize()\n");
     unsigned char *p;
     int32 res_sz;
 
@@ -899,6 +906,7 @@ int32 matrixSslGetReadbufOfSize(ssl_t *ssl, int32 size, unsigned char **buf)
  */
 int32 matrixSslGetOutdata(ssl_t *ssl, unsigned char **buf)
 {
+    fprintf(stdout, "CALLING matrixSslGetOutdata()\n");
     if (!ssl)
     {
         return PS_ARG_FAIL;
@@ -931,6 +939,7 @@ int32 matrixSslGetOutdata(ssl_t *ssl, unsigned char **buf)
  */
 int32 matrixSslGetWritebuf(ssl_t *ssl, unsigned char **buf, uint32 requestedLen)
 {
+    fprintf(stdout, "CALLING matrixSslGetWritebuf()\n");
     uint32 requiredLen, sz, overhead;
 
 # ifdef USE_DTLS
@@ -1127,6 +1136,7 @@ int32 matrixSslEncodeToUserBuf(ssl_t *ssl, unsigned char *ptBuf, uint32 ptLen,
  */
 int32 matrixSslEncodeWritebuf(ssl_t *ssl, uint32 len)
 {
+    fprintf(stdout, "CALLING matrixSslEncodeWritebuf()\n");
     unsigned char *origbuf;
     int32 rc, reserved;
 
@@ -1336,6 +1346,7 @@ static void revertToDefaultBufsize(ssl_t *ssl, uint16 inOrOut)
 int32 matrixSslReceivedData(ssl_t *ssl, uint32 bytes, unsigned char **ptbuf,
     uint32 *ptlen)
 {
+    fprintf(stdout, "CALLING matrixSslReceivedData()\n");
     unsigned char *buf, *prevBuf;
     int32 rc, decodeRet, size, sanity, decodeErr;
     uint32 processed, start, len, reqLen;
@@ -1730,6 +1741,7 @@ DECODE_MORE:
  */
 int32 matrixSslProcessedData(ssl_t *ssl, unsigned char **ptbuf, uint32 *ptlen)
 {
+    fprintf(stdout, "CALLING matrixSslProcessedData()\n");
     uint32 ctlen;
 
     if (!ssl || !ptbuf || !ptlen)
@@ -1791,6 +1803,7 @@ int32 matrixSslProcessedData(ssl_t *ssl, unsigned char **ptbuf, uint32 *ptlen)
  */
 int32 matrixSslEncodeClosureAlert(ssl_t *ssl)
 {
+    fprintf(stdout, "CALLING matrixSslEncodeClosureAlert()\n");
     sslBuf_t sbuf;
     int32 rc;
     uint32 reqLen, newLen;
@@ -1852,6 +1865,7 @@ int32_t matrixSslEncodeRehandshake(ssl_t *ssl, sslKeys_t *keys,
     uint32 sessionOption,
     const psCipher16_t cipherSpec[], uint8_t cipherSpecLen)
 {
+    fprintf(stdout, "CALLING matrixSslEncodeRehandshake()\n");
     sslBuf_t sbuf;
     int32 rc, i;
     uint32 reqLen, newLen;
@@ -2086,6 +2100,7 @@ int32_t matrixSslEncodeRehandshake(ssl_t *ssl, sslKeys_t *keys,
     uint32_t sessionOption,
     const psCipher16_t cipherSpec[], uint8_t cipherSpecLen)
 {
+    fprintf(stdout, "CALLING matrixSslEncodeRehandshake()\n");
     psTraceErrr("Rehandshaking is disabled.  matrixSslEncodeRehandshake off\n");
     return PS_FAILURE;
 }
@@ -2108,6 +2123,7 @@ int32 matrixSslReEnableRehandshakes(ssl_t *ssl)
  */
 int32 matrixSslSentData(ssl_t *ssl, uint32 bytes)
 {
+    fprintf(stdout, "CALLING matrixSslSentData()\n");
     int32 rc;
 
     if (!ssl)
@@ -2189,6 +2205,7 @@ int32 matrixSslSentData(ssl_t *ssl, uint32 bytes)
 # ifdef USE_TLS_1_3
 int32_t matrixSslSetTls13BlockPadding(ssl_t *ssl, psSizeL_t blockSize)
 {
+    fprintf(stdout, "CALLING matrixSslSetTls13BlockPadding()\n");
     if (blockSize == 0)
     {
         return PS_ARG_FAIL;
@@ -2209,26 +2226,31 @@ int32_t matrixSslSetTls13BlockPadding(ssl_t *ssl, psSizeL_t blockSize)
 
 sslKeys_t *matrixSslGetKeys(ssl_t *ssl)
 {
+    fprintf(stdout, "CALLING matrixSslGetKeys()\n");
     return ssl->keys;
 }
 
 void *matrixSslGetUserPtr(ssl_t *ssl)
 {
+    fprintf(stdout, "CALLING matrixSslGetUserPtr()\n");
     return ssl->userPtr;
 }
 
 psProtocolVersion_t matrixSslGetNegotiatedVersion(ssl_t *ssl)
 {
+    fprintf(stdout, "CALLING matrixSslGetNegotiatedVersion()\n");
     return GET_NGTD_VER(ssl);
 }
 
 psProtocolVersion_t matrixSslVersionFromMinorDigit(uint16_t digit)
 {
+    fprintf(stdout, "CALLING matrixSslVersionFromMinorDigit()\n");
     return DIGIT_TO_VER(digit);
 }
 
 psBool_t matrixSslHandshakeIsComplete(const ssl_t *ssl)
 {
+    fprintf(stdout, "CALLING matrixSslHandshakeIsComplete()\n");
     return (ssl->hsState == SSL_HS_DONE) ? PS_TRUE : PS_FALSE;
 }
 
@@ -2243,6 +2265,7 @@ psX509Cert_t* sslKeysGetCACerts(const sslKeys_t *keys)
 
 char *matrixSslGetExpectedName(const ssl_t *ssl)
 {
+    fprintf(stdout, "CALLING matrixSslGetExpectedName()\n");
     return ssl->expectedName;
 }
 
@@ -2291,6 +2314,7 @@ int32 matrixSslGetMasterSecret(
         unsigned char **masterSecret,
         psSizeL_t *hsMasterSecretLen)
 {
+    fprintf(stdout, "CALLING matrixSslGetMasterSecret()\n");
     if (!ssl || !hsMasterSecretLen)
     {
         return PS_ARG_FAIL;

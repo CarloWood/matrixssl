@@ -100,6 +100,7 @@ static char g_config[32] = "N";
 
 int32_t matrixSslOpenWithConfig(const char *config)
 {
+    fprintf(stdout, "CALLING matrixSslOpenWithConfig()\n");
     unsigned long clen;
 #ifdef USE_SERVER_SIDE_SSL
     uint32_t shared;
@@ -178,6 +179,7 @@ int32_t matrixSslOpenWithConfig(const char *config)
  */
 void matrixSslClose(void)
 {
+    fprintf(stdout, "CALLING matrixSslClose()\n");
 # ifdef USE_SERVER_SIDE_SSL
     int i;
 
@@ -226,6 +228,7 @@ int32_t matrixSslSessOptsSetKeyExGroups(sslSessOpts_t *options,
     psSize_t namedGroupsLen,
     psSize_t numClientHelloKeyShares)
 {
+    fprintf(stdout, "CALLING matrixSslSessOptsSetKeyExGroups()\n");
     psSize_t i;
 
     if (namedGroupsLen == 0)
@@ -275,6 +278,7 @@ int32_t matrixSslSessOptsSetSigAlgsCert(sslSessOpts_t *options,
         uint16_t *sigAlgs,
         psSize_t sigAlgsLen)
 {
+    fprintf(stdout, "CALLING matrixSslSessOptsSetSigAlgsCert()\n");
     psSize_t i;
 
     if (sigAlgsLen == 0 || sigAlgs == NULL || options == NULL)
@@ -305,6 +309,7 @@ int32_t matrixSslSessOptsSetSigAlgsCert(sslSessOpts_t *options,
    early_data status during or after the handshake */
 int32_t matrixSslGetEarlyDataStatus(ssl_t *ssl)
 {
+    fprintf(stdout, "CALLING matrixSslGetEarlyDataStatus()\n");
     if (ssl == NULL)
     {
         return PS_ARG_FAIL;
@@ -317,6 +322,7 @@ int32_t matrixSslGetEarlyDataStatus(ssl_t *ssl)
    or received (server) */
 int32_t matrixSslGetMaxEarlyData(ssl_t *ssl)
 {
+    fprintf(stdout, "CALLING matrixSslGetMaxEarlyData()\n");
     if (ssl == NULL)
     {
         return PS_ARG_FAIL;
@@ -353,6 +359,7 @@ int32_t matrixSslSessOptsSetSigAlgs(sslSessOpts_t *options,
         uint16_t const* sigAlgs,
         psSize_t sigAlgsLen)
 {
+    fprintf(stdout, "CALLING matrixSslSessOptsSetSigAlgs()\n");
     psSize_t i;
 
     if (sigAlgsLen == 0 || sigAlgs == NULL || options == NULL)
@@ -386,6 +393,7 @@ int32_t matrixSslSessOptsSetSigAlgs(sslSessOpts_t *options,
 int32_t matrixSslSessOptsSetMinDhBits(sslSessOpts_t *options,
         psSize_t minDhBits)
 {
+    fprintf(stdout, "CALLING matrixSslSessOptsSetMinDhBits()\n");
 # ifdef USE_DH
     if (options == NULL)
     {
@@ -830,6 +838,7 @@ static int32 initSignatureAlgorithms(ssl_t *ssl, sslSessOpts_t *options)
  */
 void matrixSslDeleteSession(ssl_t *ssl)
 {
+    fprintf(stdout, "CALLING matrixSslDeleteSession()\n");
 
     if (ssl == NULL)
     {
@@ -1479,6 +1488,7 @@ int32 matrixUpdateSession(ssl_t *ssl)
  */
 int32 matrixSslDeleteSessionTicketKey(sslKeys_t *keys, unsigned char name[16])
 {
+    fprintf(stdout, "CALLING matrixSslDeleteSessionTicketKey()\n");
     psSessionTicketKeys_t *lkey, *prev;
 
     psLockMutex(&g_sessTicketLock);
@@ -2009,6 +2019,7 @@ int32 matrixSslCreateALPNext(psPool_t *pool, int32 protoCount,
     unsigned char *proto[MAX_PROTO_EXT], int32 protoLen[MAX_PROTO_EXT],
     unsigned char **extOut, int32 *extLen)
 {
+    fprintf(stdout, "CALLING matrixSslCreateALPNext()\n");
     int32 i, len;
     unsigned char *c;
 
@@ -2051,6 +2062,7 @@ int32 matrixSslCreateALPNext(psPool_t *pool, int32 protoCount,
 int32 matrixSslCreateSNIext(psPool_t *pool, unsigned char *host, int32 hostLen,
     unsigned char **extOut, int32 *extLen)
 {
+    fprintf(stdout, "CALLING matrixSslCreateSNIext()\n");
     unsigned char *c;
 
     *extLen = hostLen + 5;

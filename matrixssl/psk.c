@@ -44,6 +44,7 @@ int32_t matrixSslLoadPsk(sslKeys_t *keys,
     const unsigned char key[SSL_PSK_MAX_KEY_SIZE], uint8_t keyLen,
     const unsigned char id[SSL_PSK_MAX_ID_SIZE], uint8_t idLen)
 {
+    fprintf(stdout, "CALLING matrixSslLoadPsk()\n");
     psPsk_t *psk, *list;
 
     if (keys == NULL || key == NULL || id == NULL)

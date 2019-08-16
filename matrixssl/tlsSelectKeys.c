@@ -43,6 +43,7 @@
 psBool_t matrixSslSetClientIdentity(ssl_t *ssl,
                                     const sslKeys_t *keys)
 {
+    fprintf(stdout, "CALLING matrixSslSetClientIdentity()\n");
     /* No keys, or no identities -> fail. In case of multiple, use the first. */
     if (keys == NULL || keys->identity == NULL)
         return PS_FALSE;

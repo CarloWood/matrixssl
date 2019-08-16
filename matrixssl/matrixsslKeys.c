@@ -52,6 +52,7 @@
 static
 psRes_t handleAuthFailDate(matrixSslLoadKeysOpts_t *opts)
 {
+    fprintf(stdout, "CALLING handleAuthFailDate()\n");
 #  ifdef POSIX /* TODO - implement date check on WIN32, etc. */
     if (opts && (opts->flags & LOAD_KEYS_OPT_ALLOW_OUT_OF_DATE_CERT_PARSE))
     {
@@ -514,6 +515,7 @@ static psRes_t sslLoadCert(psPool_t *pool,
 psRes_t psRotSetupIdentityKey(matrixSslLoadKeysOpts_t *opts,
         psPubKey_t *idKey)
 {
+    fprintf(stdout, "CALLING psRotSetupIdentityKey()\n");
 # ifdef USE_ROT_CRYPTO
     int32_t err;
 #  ifdef USE_ROT_ECC
@@ -708,6 +710,7 @@ int32_t matrixSslLoadKeysMem(sslKeys_t *keys,
         int32 CAlen,
         matrixSslLoadKeysOpts_t *opts)
 {
+    fprintf(stdout, "CALLING matrixSslLoadKeysMem()\n");
     int32_t keytype = 0;
     int32_t rc = PS_FAILURE;
 
@@ -798,6 +801,7 @@ int32 matrixSslLoadRsaKeysMemExt(sslKeys_t *keys,
         int32 CAlen,
         matrixSslLoadKeysOpts_t *opts)
 {
+    fprintf(stdout, "CALLING matrixSslLoadRsaKeysMemExt()\n");
     return matrixSslLoadKeyMaterialMem(keys,
             certBuf,
             certLen,
@@ -817,6 +821,7 @@ int32 matrixSslLoadRsaKeysMem(sslKeys_t *keys,
         const unsigned char *CAbuf,
         int32 CAlen)
 {
+    fprintf(stdout, "CALLING matrixSslLoadRsaKeysMem()\n");
     return matrixSslLoadKeyMaterialMem(keys,
             certBuf,
             certLen,
@@ -839,6 +844,7 @@ int32 matrixSslLoadEcKeysMemExt(sslKeys_t *keys,
         int32 CAlen,
         matrixSslLoadKeysOpts_t *opts)
 {
+    fprintf(stdout, "CALLING matrixSslLoadEcKeysMemExt()\n");
     return matrixSslLoadKeyMaterialMem(keys,
             certBuf,
             certLen,
@@ -858,6 +864,7 @@ int32 matrixSslLoadEcKeysMem(sslKeys_t *keys,
         const unsigned char *CAbuf,
         int32 CAlen)
 {
+    fprintf(stdout, "CALLING matrixSslLoadEcKeysMem()\n");
     return matrixSslLoadKeyMaterialMem(keys,
             certBuf,
             certLen,
@@ -1317,6 +1324,7 @@ int32 matrixSslLoadRsaKeys(sslKeys_t *keys,
         const char *privPass,
         const char *CAfile)
 {
+    fprintf(stdout, "CALLING matrixSslLoadRsaKeys()\n");
     return matrixSslLoadKeyMaterial(keys,
             certFile,
             privFile,
@@ -1336,6 +1344,7 @@ int32 matrixSslLoadEcKeysExt(sslKeys_t *keys,
         const char *CAfile,
         matrixSslLoadKeysOpts_t *opts)
 {
+    fprintf(stdout, "CALLING matrixSslLoadEcKeysExt()\n");
     return matrixSslLoadKeyMaterial(keys,
             certFile,
             privFile,
@@ -1351,6 +1360,7 @@ int32 matrixSslLoadEcKeys(sslKeys_t *keys,
         const char *privPass,
         const char *CAfile)
 {
+    fprintf(stdout, "CALLING matrixSslLoadEcKeys()\n");
     return matrixSslLoadKeyMaterial(keys,
             certFile,
             privFile,
@@ -1369,6 +1379,7 @@ psRes_t matrixSslLoadKeys(sslKeys_t *keys,
         const char *CAfile,
         matrixSslLoadKeysOpts_t *opts)
 {
+    fprintf(stdout, "CALLING matrixSslLoadKeys()\n");
     int32_t keytype = 0;
     int32_t rc = PS_FAILURE;
 
@@ -1504,6 +1515,7 @@ int32_t matrixSslLoadOCSPResponse(sslKeys_t *keys,
  */
 int32_t matrixSslNewKeys(sslKeys_t **keys, void *memAllocUserPtr)
 {
+    fprintf(stdout, "CALLING matrixSslNewKeys()\n");
     psPool_t *pool = NULL;
     sslKeys_t *lkeys;
 
@@ -1543,6 +1555,7 @@ int32_t matrixSslNewKeys(sslKeys_t **keys, void *memAllocUserPtr)
  */
 void matrixSslDeleteKeys(sslKeys_t *keys)
 {
+    fprintf(stdout, "CALLING matrixSslDeleteKeys()\n");
 #ifdef USE_PSK_CIPHER_SUITE
     psPsk_t *psk, *next;
 #endif /* USE_PSK_CIPHER_SUITE */

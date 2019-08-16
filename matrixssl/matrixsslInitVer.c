@@ -42,6 +42,7 @@ extern int32 getDefaultVersions(ssl_t *ssl);
 psBool_t matrixSslTlsVersionRangeSupported(psProtocolVersion_t low,
         psProtocolVersion_t high)
 {
+    fprintf(stdout, "CALLING matrixSslTlsVersionRangeSupported()\n");
     if (low > high)
     {
         psTraceInfo("Invalid version range: low > high\n");
@@ -78,6 +79,7 @@ matrixSslSessOptsSetClientTlsVersionRange(sslSessOpts_t *options,
         psProtocolVersion_t low,
         psProtocolVersion_t high)
 {
+    fprintf(stdout, "CALLING matrixSslSessOptsSetClientTlsVersionRange()\n");
     psProtocolVersion_t versions[TLS_MAX_SUPPORTED_VERSIONS] = {0};
     uint8_t numVersions = 0;
     uint32_t i;
@@ -109,6 +111,7 @@ matrixSslSessOptsSetClientTlsVersions(sslSessOpts_t *options,
         const psProtocolVersion_t versions[],
         int32_t versionsLen)
 {
+    fprintf(stdout, "CALLING matrixSslSessOptsSetClientTlsVersions()\n");
     uint8_t i, k;
     psProtocolVersion_t highestVersion = 0;
 

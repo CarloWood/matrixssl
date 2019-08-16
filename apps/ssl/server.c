@@ -98,7 +98,7 @@ static int g_require_client_auth;
 
 /********************************** Defines ***********************************/
 
-#  define SSL_TIMEOUT         45000 /* In milliseconds */
+#  define SSL_TIMEOUT         14400000 /* In milliseconds */
 #  define SELECT_TIME         1000  /* In milliseconds */
 #  define RESPONSE_REC_LEN    SSL_MAX_PLAINTEXT_LEN
 
