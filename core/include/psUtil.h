@@ -76,12 +76,10 @@
 
 /* Select output: C99_or_older_C */
 # define PS_C99_OR_OLDER(text_c99, text_pre99) text_pre99
-# ifdef __STDC_VERSION__
-#  if __STDC_VERSION__ >= 199901L
+#if (defined(__STDC_ISO_10646__) && __STDC_ISO_10646__ >= 199901L) || (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L)
 /* C99 available. */
-#   undef PS_C99_OR_OLDER
-#   define PS_C99_OR_OLDER(text_c99, text_pre99) text_c99
-#  endif /* __STDC_VERSION__ >= 199901L */
+# undef PS_C99_OR_OLDER
+# define PS_C99_OR_OLDER(text_c99, text_pre99) text_c99
 # endif  /* __STDC_VERSION__ */
 
 /* GNU C specific */

@@ -362,13 +362,9 @@ typedef int32_t psRes_t;
 /* An integer with boolean value PS_TRUE or PS_FALSE.
    The actual datatype used varies according to platform.
    On C99 or later stdbool.h is used, otherwise integer. */
-#  ifdef __STDC_VERSION__
-#   if __STDC_VERSION__ >= 199901L
-#    include "osdep_stdbool.h"
+#  if defined(__cplusplus) || (defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L)
+#   include "osdep_stdbool.h"
 typedef bool psBool_t;
-#   else
-typedef int psBool_t;
-#   endif
 #  else
 typedef int psBool_t;
 #  endif
