@@ -4,7 +4,7 @@
 
 AM_CPPFLAGS =
 DEFS = -DMATRIX_CONFIGURATION_INCDIR_FIRST
-DEFAULT_INCLUDES = -I @top_builddir@/evio/matrixssl
+DEFAULT_INCLUDES =
 
 # Override according to the type of the system
 libcore_s_la_SOURCES=\
