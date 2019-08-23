@@ -1,12 +1,6 @@
 AM_MAKEFLAGS = -I "$(srcdir)/core" -I "$(srcdir)/crypto" OBJS= STATIC= MATRIX_DEBUG=1 MATRIX_SSL_TRACE=1
 
-BUILT_SOURCES = coreConfig.h cryptoConfig.h matrixsslConfig.h
-
 SUBDIRS= core crypto matrixssl apps
-
-$(BUILT_SOURCES):
-	-rm $(srcdir)/$@
-	ln -sf $(srcdir)/configs/default/$@
 
 # --------------- Maintainer's Section
 

@@ -1,5 +1,5 @@
 DEFS = -DMATRIX_CONFIGURATION_INCDIR_FIRST
-DEFAULT_INCLUDES = -I @top_builddir@/evio/matrixssl
+DEFAULT_INCLUDES =
 
 noinst_PROGRAMS = dtlsClient dtlsServer
 
