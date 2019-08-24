@@ -2048,7 +2048,7 @@ int32 matrixSslCreateALPNext(psPool_t *pool, int32 protoCount,
 
 /******************************************************************************/
 
-int32 matrixSslCreateSNIext(psPool_t *pool, unsigned char *host, int32 hostLen,
+int32 matrixSslCreateSNIext(psPool_t *pool, char const* host, int32 hostLen,
     unsigned char **extOut, int32 *extLen)
 {
     unsigned char *c;

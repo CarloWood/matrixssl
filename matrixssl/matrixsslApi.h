@@ -181,7 +181,7 @@ PSPUBLIC void matrixSslRegisterSNICallback(
         sniCb_t sni_cb);
 PSPUBLIC int32 matrixSslCreateSNIext(
         psPool_t *pool,
-        unsigned char *host,
+        char const* host,
         int32 hostLen,
         unsigned char **extOut,
         int32 *extLen);
