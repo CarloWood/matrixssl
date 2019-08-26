@@ -104,9 +104,6 @@ static unsigned char g_httpRequestHdr[] = "GET %s HTTP/1.0\r\n"
                                           "Content-Length: 0\r\n"
                                           "\r\n";
 
-static const char g_strver[][8] =
-{ "SSL 3.0", "TLS 1.0", "TLS 1.1", "TLS 1.2", "TLS 1.3" };
-
 static psList_t *g_groupList;
 static psSize_t g_num_key_shares;
 static psList_t *g_sigAlgsList;
@@ -392,7 +389,7 @@ static int32 httpsClientConnection(sslKeys_t *keys, sslSessionId_t *sid,
         Memcpy(g_server_name, g_ip, Strlen(g_ip));
     }
     matrixSslCreateSNIext(NULL,
-            (unsigned char *) g_server_name, (uint32) Strlen(g_server_name),
+            g_server_name, (uint32) Strlen(g_server_name),
             &ext, &extLen);
     matrixSslLoadHelloExtension(extension, ext, extLen, EXT_SNI);
     psFree(ext, NULL);
