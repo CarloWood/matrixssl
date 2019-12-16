@@ -1085,8 +1085,8 @@ int32_t tls13ParsePreSharedKey(ssl_t *ssl,
     int32_t rc;
     uint16_t ix;
     uint32_t obfuscatedTicketAge = 0;
-    uint32_t clientTicketAge;
-    uint32_t serverTicketAge;
+    int32_t clientTicketAge;
+    int32_t serverTicketAge;
     psTime_t now;
     psSizeL_t idsLen, remIdsLen;
     psSizeL_t bindersLen = 0, identityLen;
