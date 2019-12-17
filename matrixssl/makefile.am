@@ -4,10 +4,10 @@
 
 AM_CPPFLAGS =
 DEFS = -DMATRIX_CONFIGURATION_INCDIR_FIRST
-MATRIXSSL_ROOT := @top_srcdir@/evio/matrixssl
-DEFAULT_INCLUDES = -I $(MATRIXSSL_ROOT)
+DEFAULT_INCLUDES = -I @matrixssl_srcdir@
 
 noinst_LTLIBRARIES = libssl_s.la
+MATRIXSSL_ROOT := @matrixssl_srcdir@
 
 libssl_s_la_SOURCES = \
 	cipherSuite.c \

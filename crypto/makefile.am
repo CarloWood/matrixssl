@@ -5,7 +5,7 @@
 AM_CPPFLAGS =
 DEFS = -DMATRIX_CONFIGURATION_INCDIR_FIRST
 DEFAULT_INCLUDES =
-MATRIXSSL_ROOT := @top_srcdir@/evio/matrixssl
+MATRIXSSL_ROOT := @matrixssl_srcdir@
 
 SRC:=\
 	common/alg_info.c \

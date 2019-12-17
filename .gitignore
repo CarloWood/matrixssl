@@ -58,4 +58,16 @@ xcuserdata/
 
 # GNU autotools and awk generated files
 makefile.in
-Makefile.in
+autom4te.cache
+m4
+aclocal.m4
+compile
+config.guess
+config.h.in
+config.h.in~
+config.sub
+configure
+depcomp
+install-sh
+ltmain.sh
+missing

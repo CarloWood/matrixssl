@@ -103,19 +103,22 @@ matrixssl_config_dir=default
 AC_SUBST([matrixssl_config_dir])
 
 dnl Flags that TU's must use that #include "matrixssl/matrixsslApi.h".
-MATRIXSSL_CFLAGS='dnl
-        -maes dnl
-        -DMATRIX_CONFIGURATION_INCDIR_FIRST dnl
-        -I${top_builddir}/evio/matrixssl dnl
-        -I${top_srcdir}/evio/matrixssl dnl
-        -I${top_srcdir}/evio/matrixssl/core/include dnl
-        -I${top_srcdir}/evio/matrixssl/core/osdep/include'
+MATRIXSSL_CFLAGS='-maes -DMATRIX_CONFIGURATION_INCDIR_FIRST -I$(MATRIXSSL_BUILDDIR) -I$(MATRIXSSL_SRCDIR) -I$(MATRIXSSL_SRCDIR)/core/include -I$(MATRIXSSL_SRCDIR)/core/osdep/include'
+MATRIXSSL_LIBS='$(MATRIXSSL_BUILDDIR)/matrixssl/libssl_s.la $(MATRIXSSL_BUILDDIR)/crypto/libcrypt_s.la $(MATRIXSSL_BUILDDIR)/core/libcore_s.la'
 
-MATRIXSSL_LIBS='dnl
-        ${top_builddir}/evio/matrixssl/matrixssl/libssl_s.la dnl
-        ${top_builddir}/evio/matrixssl/core/libcore_s.la dnl
-        ${top_builddir}/evio/matrixssl/crypto/libcrypt_s.la'
+dnl In the case of this configure.ac being used, we could have used @top_srcdir@ and @top_builddir@
+dnl instead of @matrixssl_srcdir@ and @matrixssl_builddir@. But when this library is build as a cwm4
+dnl submodule then that would be substituted with the root of the main project and the build root of
+dnl main project respectively, instead of the root of this (library) project; therefore we use
+dnl @matrixssl_srcdir@ and @matrixssl_builddir@.
+dnl
+dnl In order to give those the right values when this configure.ac is being used (aka the configure
+dnl script in this directory is being run) we can use the following variables.
+matrixssl_srcdir="$ac_abs_confdir"
+matrixssl_builddir="$ac_pwd"
 
+AC_SUBST([matrixssl_srcdir])
+AC_SUBST([matrixssl_builddir])
 AC_SUBST([MATRIXSSL_CFLAGS])
 AC_SUBST([MATRIXSSL_LIBS])
 

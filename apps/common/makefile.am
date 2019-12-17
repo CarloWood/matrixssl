@@ -1,10 +1,11 @@
-DEFS = -DMATRIX_CONFIGURATION_INCDIR_FIRST
-DEFAULT_INCLUDES =
-
 noinst_LTLIBRARIES = libclient_common_s.la
 
+MATRIXSSL_SRCDIR = @matrixssl_srcdir@
+MATRIXSSL_BUILDDIR = @matrixssl_builddir@
+MATRIXSSL_CFLAGS = @MATRIXSSL_CFLAGS@
+
 libclient_common_s_la_SOURCES = client_common.c client_common.h clientconfig.c load_keys.c
-libclient_common_s_la_CFLAGS = $(CW_MATRIXSSL_CFLAGS)
+libclient_common_s_la_CFLAGS = $(MATRIXSSL_CFLAGS)
 
 # --------------- Maintainer's Section
 
