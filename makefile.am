@@ -11,8 +11,10 @@ MAINTAINERCLEANFILES = $(srcdir)/makefile.in
 
 # Delete these to make build dir 'clean'.
 list-build-files: all
+	@echo -e "apps/dtls/dtlsServer\napps/dtls/dtlsClient\napps/ssl/simpleServer\napps/ssl/server\napps/ssl/simpleClient\napps/ssl/client"
 	@find "$(top_builddir)" -regextype egrep \( -name '.dirstamp' -o -regex '.*\.(lo|o|la|a)' \) -printf '%P\n'
 
 # Delete these too to make build dir 'dist-clean'.
 list-configure-files:
+	@echo -e "config.h\nconfig.log\nconfig.status\nstamp-h1\nlibtool"
 	@find "$(top_builddir)" -regextype egrep \( -name 'makefile' -o -name 'GNUmakefile' -o -regex '.*/\.deps/[^/]*\.(Plo|Po)' \) -printf '%P\n'
