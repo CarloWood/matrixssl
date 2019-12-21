@@ -12,6 +12,37 @@ which is git submodule itself (still under development) relying on [cwm4](https:
 for its inclusion into the application project. Adding direct support for `cwm4` to this
 `matrixssl` submodule is on the `TODO` list.
 
+After cloning this with git we are "maintainer-clean" and
+the following commands must be run:
+
+1) `libtoolize --force --automake`
+2) `aclocal -I m4/aclocal -I path_to_cwm4/cwm4/aclocal`
+
+where cwm4 can be found [here](https://github.com/CarloWood/cwm4).
+
+3) `autoheader`
+4) `automake --add-missing --foreign`
+5) `autoconf && sed -i 's/rm -f core/rm -f/' configure`
+
+This creates in the source directory the file `configure`.
+The `sed` is optional, but will suppress a flood of warnings,
+when running `configure`, about trying to remove the `core` directory.
+
+At this point we are "dist-clean".
+
+Next one should configure. Create a build directory and
+change current working directory to it. Then run,
+
+6) `path_to_configure/configure --enable-maintainer-mode`
+
+This creates in the build directory (the current directory)
+files that can be listed with the command: `make list-configure-files`
+
+At this point we are "clean".
+
+After running `make` to build the project, generated files
+can be listed with: `make list-build-files`
+
 ## Upstream README
 
 ![MatrixSSL Banner](img/matrixssl_logo_transparent_md.png)

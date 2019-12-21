@@ -33,6 +33,7 @@ define(CW_MAX_ERRORS, 2)
 
 dnl Package name and version
 AC_INIT(CW_PACKAGE_NAME, CW_VERSION_MAJOR.CW_VERSION_MINOR.CW_VERSION_REVISION, CW_BUGREPORT)
+AC_CONFIG_AUX_DIR(.)
 
 dnl Automake options.
 AM_INIT_AUTOMAKE(1.8.1 foreign subdir-objects)

@@ -5,3 +5,14 @@ SUBDIRS= core crypto matrixssl apps
 # --------------- Maintainer's Section
 
 MAINTAINERCLEANFILES = $(srcdir)/makefile.in
+
+.PHONY: list-make-files list-configure-files
+.SILENT:
+
+# Delete these to make build dir 'clean'.
+list-build-files: all
+	@find "$(top_builddir)" -regextype egrep \( -name '.dirstamp' -o -regex '.*\.(lo|o|la|a)' \) -printf '%P\n'
+
+# Delete these too to make build dir 'dist-clean'.
+list-configure-files:
+	@find "$(top_builddir)" -regextype egrep \( -name 'makefile' -o -name 'GNUmakefile' -o -regex '.*/\.deps/[^/]*\.(Plo|Po)' \) -printf '%P\n'
