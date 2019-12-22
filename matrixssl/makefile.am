@@ -4,7 +4,7 @@
 
 AM_CPPFLAGS =
 DEFS = -DMATRIX_CONFIGURATION_INCDIR_FIRST
-DEFAULT_INCLUDES = -I @matrixssl_srcdir@
+DEFAULT_INCLUDES =  -I @matrixssl_builddir@ -I @matrixssl_srcdir@
 
 noinst_LTLIBRARIES = libssl_s.la
 MATRIXSSL_ROOT := @matrixssl_srcdir@

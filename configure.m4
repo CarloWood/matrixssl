@@ -11,16 +11,24 @@ dnl Flags that TU's must use that #include "matrixssl/matrixsslApi.h".
 MATRIXSSL_CFLAGS='dnl
         -maes dnl
         -DMATRIX_CONFIGURATION_INCDIR_FIRST dnl
-        -I${top_builddir}/evio/matrixssl dnl
-        -I${top_srcdir}/evio/matrixssl dnl
-        -I${top_srcdir}/evio/matrixssl/core/include dnl
-        -I${top_srcdir}/evio/matrixssl/core/osdep/include'
+        -I${top_builddir}/evio/protocol/matrixssl dnl
+        -I${top_srcdir}/evio/protocol/matrixssl dnl
+        -I${top_srcdir}/evio/protocol/matrixssl/core/include dnl
+        -I${top_srcdir}/evio/protocol/matrixssl/core/osdep/include'
 
 MATRIXSSL_LIBS='dnl
-        ${top_builddir}/evio/matrixssl/matrixssl/libssl_s.la dnl
-        ${top_builddir}/evio/matrixssl/core/libcore_s.la dnl
-        ${top_builddir}/evio/matrixssl/crypto/libcrypt_s.la'
+        ${top_builddir}/evio/protocol/matrixssl/matrixssl/libssl_s.la dnl
+        ${top_builddir}/evio/protocol/matrixssl/crypto/libcrypt_s.la dnl
+        ${top_builddir}/evio/protocol/matrixssl/core/libcore_s.la'
 
+# We can use @top_srcdir@ and @top_builddir@ here because substitution
+# isn't recursive and we need to use @matrixssl_srcdir@ and @matrixssl_builddir@
+# to support building this as ExternalProject with cmake.
+matrixssl_srcdir="$ac_abs_confdir/evio/protocol/matrixssl"
+matrixssl_builddir="$ac_pwd/evio/protocol/matrixssl"
+
+AC_SUBST([matrixssl_srcdir])
+AC_SUBST([matrixssl_builddir])
 AC_SUBST([MATRIXSSL_CFLAGS])
 AC_SUBST([MATRIXSSL_LIBS])
 
