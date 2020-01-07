@@ -31,68 +31,8 @@ define(CW_THREADS, [yes])
 # CW_MAX_ERRORS is the maximum number of errors the compiler will show.
 define(CW_MAX_ERRORS, 2)
 
-dnl Package name and version
-AC_INIT(CW_PACKAGE_NAME, CW_VERSION_MAJOR.CW_VERSION_MINOR.CW_VERSION_REVISION, CW_BUGREPORT)
-AC_CONFIG_AUX_DIR(.)
-
-dnl Automake options.
-AM_INIT_AUTOMAKE(1.8.1 foreign subdir-objects)
-
-dnl Minimum autoconf version to use.
-AC_PREREQ(2.60)
-
-dnl Where libtoolize should put it's macro files.
-AC_CONFIG_MACRO_DIR([m4/aclocal])
-
-dnl Put resulting configuration defines in this header file.
-AC_CONFIG_HEADERS([config.h])
-
-dnl Include maintainer mode targets
-AM_MAINTAINER_MODE
-
-dnl Check for compiler and preprocessor
-AC_PROG_CC_C99
-AC_PROG_CXX
-AC_PROG_CXXCPP
-
-dnl Substitute VERSIONINFO when CW_INTERFACE_VERSION is set.
-# Libtool version info
-VERSIONINFO="CW_INTERFACE_VERSION:CW_INTERFACE_VERSION_REVISION:CW_INTERFACE_AGE"
-AC_SUBST(VERSIONINFO)
-
-dnl Add --enable-debug (DEBUG, DOXYGEN_DEBUG), --enable-libcwd (CWDEBUG, DOXYGEN_CWDEBUG), --enable-optimize and --enable-profile options.
-dnl Update USE_LIBCWD, LIBCWD(_R)_FLAGS, LIBCWD(_R)_LIBS and CXXFLAGS accordingly.
-dnl Second parameter can be [no] (single-threaded), [yes] (multi-threaded) or [both] (single and multi-threaded applications).
-dnl Third parameter can be empty (no limit), or an integer (larger than 0) to limit the maximum number of printed compiler errors.
-CW_OPG_CXXFLAGS([CW_COMPILE_FLAGS], [CW_THREADS], [CW_MAX_ERRORS])
-
-LT_INIT
-LT_PREREQ([2.2])
-
-dnl Checks for other programs.
-AC_PROG_INSTALL
-
-dnl Suppress warning from ar by supplying U flag.
-dnl There seem to be two variants of AR[_]FLAGS in use, set both.
-AC_SUBST(AR_FLAGS, [cruU])
-AC_SUBST(ARFLAGS, [cruU])
-
-dnl Check if we are the real maintainer.
-cw_real_maintainer=0
-if test -z "$MAINTAINER_MODE_TRUE" -a -n "$REPOBASE"; then
-  if test "$(echo "$GIT_COMMITTER_EMAIL" | md5sum | cut -d \  -f 1)" = dnl
-      "$(sed -n -e 's/.*MAINTAINER_HASH=//p' "$REPOBASE/autogen.sh")"; then
-    cw_real_maintainer=1
-  fi
-fi
-AM_CONDITIONAL(REAL_MAINTAINER, test $cw_real_maintainer = 1)
-
-### Uncomment this if the project is using doxygen to generate documentation.
-# We use doxygen for documentation.
-#CW_DOXYGEN([])
-
-### Uncomment this to add more configuration output files.
-#AC_CONFIG_FILES([src/Makefile] [matrixssl.pc])
+# Include cwm4 header.
+m4_include([cwm4/configure_ac_top.m4])
 
 dnl Used to generate a makefile with includes without that automake sees an include.
 dnl Instead of using include in the makefile.am, we use @matrixssl_include@.
@@ -126,6 +66,8 @@ AC_SUBST([MATRIXSSL_LIBS])
 dnl Do not put AM_MAKEFLAGS as variable in automake.in.
 AC_SUBST([AM_MAKEFLAGS])
 AM_SUBST_NOTMAKE([AM_MAKEFLAGS])
+
+m4_sinclude([m4/submodules.m4])
 
 AC_CONFIG_FILES([makefile core/makefile crypto/makefile crypto/GNUmakefile matrixssl/makefile
                 matrixssl/GNUmakefile apps/makefile apps/common/GNUmakefile apps/common/makefile
