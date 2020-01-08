@@ -4,8 +4,10 @@
 
 AM_CPPFLAGS =
 DEFS = -DMATRIX_CONFIGURATION_INCDIR_FIRST
-DEFAULT_INCLUDES = -I @matrixssl_builddir@
-MATRIXSSL_ROOT := @matrixssl_srcdir@
+DEFAULT_INCLUDES = -I @matrixssl_srcdir@
+MATRIXSSL_SRCDIR = @matrixssl_srcdir@
+MATRIXSSL_BUILDDIR = @matrixssl_builddir@
+MATRIXSSL_ROOT = ..
 
 SRC:=\
 	common/alg_info.c \

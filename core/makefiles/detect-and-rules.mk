@@ -8,8 +8,6 @@
 # Allow building inclusion paths relative to location of common.mk file.
 #COMMON_MK_PATH:=$(dir $(lastword $(MAKEFILE_LIST)))
 
-# Find core library.
-CORE_PATH:=$(patsubst %/,%/..,$(dir $(lastword $(MAKEFILE_LIST))))
 include $(CORE_PATH)/Makefile.inc
 
 #ifdef USE_ROT_CRYPTO
@@ -81,13 +79,13 @@ CLEAN_ENV=LC_ALL=POSIX
 #  i386-redhat-linux
 #  x86_64-redhat-linux
 ifeq '$(CCARCH)' ''
-CCARCH:=$(shell $(CLEAN_ENV) $(CC) $(CFLAGS_ARCHITECTURE_VARIANT) $(FLAGS_ARCHITECTURE_VARIANT) -print-multiarch)
+CCARCH:=$(shell $(CLEAN_ENV) $(CC) $(CFLAGS_ARCHITECTURE_VARIANT) $(FLAGS_ARCHITECTURE_VARIANT) -print-multiarch 2>/dev/null)
 ifeq '$(CCARCH)' ''
-CCARCH:=$(shell $(CLEAN_ENV) $(CC) -v 2>&1 | sed -n '/Target: / s/// p')
+CCARCH:=$(shell $(CLEAN_ENV) $(CC) -v 2>&1 | sed -n '/Target: / s/// p' 2>/dev/null)
 ifeq '$(CCARCH)' ''
 # Could not obtain target triplet: Try still -dumpmachine (supported by
 # some versions of GCC)
-CCARCH:=$(shell $(CLEAN_ENV) $(CC) -dumpmachine)
+CCARCH:=$(shell $(CLEAN_ENV) $(CC) -dumpmachine 2>/dev/null)
 ifeq '$(CCARCH)' ''
 $(error Unable to determine compiler architecture.
 $(CC) $(CFLAGS_ARCHITECTURE_VARIANT) $(FLAGS_ARCHITECTURE_VARIANT) -print-multiarch or $(CC) -v or $(CC) -dumpmachine does not work. Please, provide CCARCH manually via an environment variable.)

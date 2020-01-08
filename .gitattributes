@@ -3,7 +3,7 @@
 *.ld export-subst
 *.sh export-subst
 *.mk export-subst
-Makefile export-subst
+Makefile.inside export-subst
 .git* export-ignore
 
 

@@ -5,6 +5,9 @@
 AM_CPPFLAGS =
 DEFS = -DMATRIX_CONFIGURATION_INCDIR_FIRST
 DEFAULT_INCLUDES = -I @matrixssl_builddir@
+MATRIXSSL_SRCDIR = @matrixssl_srcdir@
+MATRIXSSL_BUILDDIR = @matrixssl_builddir@
+MATRIXSSL_ROOT = ..
 
 # Override according to the type of the system
 libcore_s_la_SOURCES=\
@@ -27,11 +30,11 @@ libtestsupp_s_la_API = core testsupp
 libtestsupp_s_la_CFLAGS = $(core_API_CFLAGS) $(testsupp_API_CFLAGS) $(CFLAGS_POSITION_INDEPENDENT)
 
 # Special case: on ARM platforms sl_neon.c needs NEON compilation flags.
-@matrixssl_include@ makefiles/platform_specific.mk
+@matrixssl_include@ @srcdir@/makefiles/platform_specific.mk
 sl_neon_c_CFLAGS=$(CFLAGS_ENABLE_NEON)
 
 CORE_DIR=../core
-@matrixssl_include@ $(CORE_DIR)/makefiles/rules.mk
+@matrixssl_include@ @srcdir@/$(CORE_DIR)/makefiles/rules.mk
 
 CPPFLAGS_EXTRACT_MACROS=-dM
 # Allows to check configuration options.

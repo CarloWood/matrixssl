@@ -67,9 +67,14 @@ dnl Do not put AM_MAKEFLAGS as variable in automake.in.
 AC_SUBST([AM_MAKEFLAGS])
 AM_SUBST_NOTMAKE([AM_MAKEFLAGS])
 
-m4_sinclude([m4/submodules.m4])
-
-AC_CONFIG_FILES([makefile core/makefile crypto/makefile crypto/GNUmakefile matrixssl/makefile
+AC_CONFIG_FILES([core/makefile crypto/makefile crypto/GNUmakefile matrixssl/makefile
                 matrixssl/GNUmakefile apps/makefile apps/common/GNUmakefile apps/common/makefile
-                apps/dtls/GNUmakefile apps/dtls/makefile apps/ssl/GNUmakefile apps/ssl/makefile])
-AC_OUTPUT
+                apps/dtls/GNUmakefile apps/dtls/makefile apps/ssl/GNUmakefile apps/ssl/makefile
+                corepath.mk])
+
+# The following files are included by makefiles using relative paths, so we need to have them in the build directory.
+AC_CONFIG_LINKS([core/makefiles/get_CCARCH.mk:core/makefiles/get_CCARCH.mk
+                 core/Makefile.inc:core/Makefile.inc common.mk:common.mk
+                 core/makefiles/detect-and-rules.mk:core/makefiles/detect-and-rules.mk])
+
+m4_include([cwm4/configure_ac_bottom.m4])

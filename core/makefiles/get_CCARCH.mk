@@ -2,13 +2,13 @@
 
 # Detect target architecture
 ifeq '$(CCARCH)' ''
-CCARCH:=$(shell $(CLEAN_ENV) $(CC) $(CFLAGS_ARCHITECTURE_VARIANT) $(FLAGS_ARCHITECTURE_VARIANT) -print-multiarch)
+CCARCH:=$(shell $(CLEAN_ENV) $(CC) $(CFLAGS_ARCHITECTURE_VARIANT) $(FLAGS_ARCHITECTURE_VARIANT) -print-multiarch 2>/dev/null)
 ifeq '$(CCARCH)' ''
-CCARCH:=$(shell $(CLEAN_ENV) $(CC) -v 2>&1 | sed -n '/Target: / s/// p')
+CCARCH:=$(shell $(CLEAN_ENV) $(CC) -v 2>&1 | sed -n '/Target: / s/// p' 2>/dev/null)
 ifeq '$(CCARCH)' ''
 # Could not obtain target triplet: Try still -dumpmachine (supported by
 # some versions of GCC)
-CCARCH:=$(shell $(CLEAN_ENV) $(CC) -dumpmachine)
+CCARCH:=$(shell $(CLEAN_ENV) $(CC) -dumpmachine 2>/dev/null)
 
 ARM_ARCH ?= armv7-a
 

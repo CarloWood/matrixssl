@@ -8,6 +8,9 @@ BEGIN {
   printf "AM_CPPFLAGS =\n"
   printf "DEFS = -DMATRIX_CONFIGURATION_INCDIR_FIRST\n"
   printf "DEFAULT_INCLUDES = -I @matrixssl_builddir@\n"
+  printf "MATRIXSSL_SRCDIR = @matrixssl_srcdir@\n"
+  printf "MATRIXSSL_BUILDDIR = @matrixssl_builddir@\n"
+  printf "MATRIXSSL_ROOT = ..\n"
 }
 
 # Stop processing after this line.
@@ -100,8 +103,9 @@ BEGIN {
 }
 
 # Stop automake from interpreting 'include' keywords.
-/^include/ {
-  sub(/^include/, "@matrixssl_include@")
+# Also allow building out-of-source by fixing the (relative) paths by prepending the srcdir.
+/^include / {
+  sub(/^include /, "@matrixssl_include@ @srcdir@/")
 }
 
 /^libcore_s_la_CFLAGS/ {

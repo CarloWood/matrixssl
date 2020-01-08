@@ -1,10 +1,13 @@
+include $(srcdir)/cwm4/root_makefile_top.am
 AM_MAKEFLAGS = -I "$(srcdir)/core" -I "$(srcdir)/crypto" OBJS= STATIC=
 
-SUBDIRS= core crypto matrixssl apps
+SUBDIRS= @CW_SUBDIRS@ core crypto matrixssl apps
+
+noinst_LTLIBRARIES =
+
+include $(srcdir)/cwm4/root_makefile_bottom.am
 
 # --------------- Maintainer's Section
-
-MAINTAINERCLEANFILES = $(srcdir)/makefile.in
 
 .PHONY: list-make-files list-configure-files
 .SILENT:
@@ -16,5 +19,5 @@ list-build-files: all
 
 # Delete these too to make build dir 'dist-clean'.
 list-configure-files:
-	@echo -e "config.h\nconfig.log\nconfig.status\nstamp-h1\nlibtool"
+	@echo -e "Makefile\nconfig.h\nconfig.log\nconfig.status\nstamp-h1\nlibtool"
 	@find "$(top_builddir)" -regextype egrep \( -name 'makefile' -o -name 'GNUmakefile' -o -regex '.*/\.deps/[^/]*\.(Plo|Po)' \) -printf '%P\n'

@@ -57,6 +57,7 @@ xcuserdata/
 /apps/ssl/server
 
 # GNU autotools and awk generated files
+Makefile.in
 makefile.in
 autom4te.cache
 m4

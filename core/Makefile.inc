@@ -7,10 +7,7 @@
 # This Makefile.inc is used from other Makefiles to reference
 # parts of the core library.
 
-# Find path of the current directory (unless previously specified)
-ifeq '$(origin CORE_PATH)' 'undefined'
-CORE_PATH:=$(patsubst %/,%/,$(dir $(lastword $(MAKEFILE_LIST))))
-endif
+include $(MATRIXSSL_BUILDDIR)/corepath.mk
 
 # Find path of the core module
 CFLAGS_CORE_INCLUDE=\

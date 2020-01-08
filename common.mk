@@ -6,11 +6,7 @@
 #-------------------------------------------------------------------------------
 
 # Find core library.
--include corepath.mk
-
-ifeq '$(CORE_PATH)' ''
-CORE_PATH:=$(patsubst %/,%/core,$(dir $(lastword $(MAKEFILE_LIST))))
-endif
+include $(MATRIXSSL_BUILDDIR)/corepath.mk
 
 # The common.mk is replaced by equivalent functionality within core.
 include $(CORE_PATH)/makefiles/detect-and-rules.mk

@@ -1,3 +1,5 @@
+MATRIXSSL_BUILDDIR = @matrixssl_builddir@
+
 include @srcdir@/Makefile
 include @srcdir@/makefile.inc
 include makefile
