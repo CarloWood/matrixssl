@@ -26,7 +26,7 @@ ifneq '$(CIPHER_OPTION)' ''
   CFLAGS+=-D$(CIPHER_OPTION)
 endif
 
-include $(MATRIXSSL_ROOT)/common.mk
+include $(MATRIXSSL_SRCDIR)/common.mk
 
 all: compile
 

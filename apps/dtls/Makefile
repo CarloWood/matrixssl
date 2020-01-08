@@ -27,7 +27,7 @@ endif
 
 SRC:=$(SERVER_SRC) $(CLIENT_SRC)
 
-include $(MATRIXSSL_ROOT)/common.mk
+include $(MATRIXSSL_SRCDIR)/common.mk
 
 # Linked files
 STATIC:=\

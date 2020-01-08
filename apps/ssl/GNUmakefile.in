@@ -1,3 +1,4 @@
+MATRIXSSL_SRCDIR := @matrixssl_srcdir@
 include @srcdir@/Makefile
 CW_MATRIXSSL_CFLAGS := ${CFLAGS}
 include makefile
