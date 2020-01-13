@@ -3,8 +3,6 @@ AM_MAKEFLAGS = -I "$(srcdir)/core" -I "$(srcdir)/crypto" OBJS= STATIC=
 
 SUBDIRS = core crypto matrixssl apps # @CW_SUBDIRS@
 
-noinst_LTLIBRARIES =
-
 include $(srcdir)/cwm4/root_makefile_bottom.am
 
 # --------------- Maintainer's Section
