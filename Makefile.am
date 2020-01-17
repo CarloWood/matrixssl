@@ -1,5 +1,5 @@
 include $(srcdir)/cwm4/root_makefile_top.am
-AM_MAKEFLAGS = -I "$(srcdir)/core" -I "$(srcdir)/crypto" OBJS= STATIC=
+AM_MAKEFLAGS = -I "@matrixssl_srcdir@/core" -I "@matrixssl_srcdir@/crypto" OBJS= STATIC=
 
 SUBDIRS = core crypto matrixssl apps # @CW_SUBDIRS@
 
