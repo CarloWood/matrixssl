@@ -17,5 +17,5 @@ list-build-files: all
 
 # Delete these too to make build dir 'dist-clean'.
 list-configure-files:
-	@echo -e "Makefile\nconfig.h\nconfig.log\nconfig.status\nstamp-h1\nlibtool"
+	@echo -e "Makefile\nconfig.h\nconfig.log\nconfig.status\nstamp-h1\nlibtool\ncorepath.mk"
 	@find "$(top_builddir)" -regextype egrep \( -name 'makefile' -o -name 'GNUmakefile' -o -regex '.*/\.deps/[^/]*\.(Plo|Po)' \) -printf '%P\n'
