@@ -42,11 +42,6 @@ if test -d .git; then
       exit $RET
     fi
   fi
-  # Update all submodules.
-  if ! cwm4/scripts/update_submodules.sh --recursive; then
-    echo "autogen.sh: Failed to update one or more submodules. Does it have uncommitted changes?"
-    exit 1
-  fi
   if test -z "$AUTOGEN_CMAKE_ONLY"; then
     cwm4/scripts/do_submodules.sh
   fi
