@@ -86,6 +86,7 @@ LDFLAGS+=$(LDFLAGS_ARCHITECTURE_VARIANT) $(FLAGS_ARCHITECTURE_VARIANT) $(LDFLAGS
 endif
 
 # Extra includes to find core and CL headers
+MATRIXSSL_BUILDDIR=$(CORE_DIR)/..
 include $(CORE_DIR)/Makefile.inc
 
 # Common dependencies

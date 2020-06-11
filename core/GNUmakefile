@@ -4,7 +4,7 @@
 #	Copyright (c) 2013-2017 INSIDE Secure Corporation. All Rights Reserved.
 #
 
-ifeq ($(wildcard Makefile),)
+ifeq ($(wildcard makefile),)
 
 # Override according to the type of the system
 OSDEP=osdep/POSIX
@@ -83,6 +83,8 @@ CPPFLAGS_EXTRACT_MACROS=-dM
 parse-config:
 	echo '#include "coreConfig.h"' | $(CC) $(CFLAGS) -I config $(CPPFLAGS_EXTRACT_MACROS) -E -x c -
 
+maintainer-clean:
+
 else
 
 # Makefile exists. Let it override this build file.
@@ -90,6 +92,6 @@ else
 # This rule will allow the user to override this GNUmakefile with
 # build rules from eg. cmake.
 
-include Makefile
+include makefile
 
 endif
